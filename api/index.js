@@ -507,7 +507,7 @@ export default async function handler(request) {
                 'User-Agent': getReqHeader("User-Agent"),
                 'Accept': getReqHeader("Accept"),
                 'Accept-Language': getReqHeader("Accept-Language"),
-                'Accept-Encoding': getReqHeader("Accept-Encoding"),
+                'Accept-Encoding': 'identity',
                 'Connection': 'keep-alive',
                 'Cache-Control': 'max-age=0'
             }
@@ -546,7 +546,7 @@ export default async function handler(request) {
                     'User-Agent': getReqHeader("User-Agent"),
                     'Accept': getReqHeader("Accept"),
                     'Accept-Language': getReqHeader("Accept-Language"),
-                    'Accept-Encoding': getReqHeader("Accept-Encoding"),
+                    'Accept-Encoding': 'identity',
                     'Connection': 'keep-alive',
                     'Cache-Control': 'max-age=0'
                 }
@@ -559,7 +559,7 @@ export default async function handler(request) {
                     'User-Agent': getReqHeader("User-Agent"),
                     'Accept': getReqHeader("Accept"),
                     'Accept-Language': getReqHeader("Accept-Language"),
-                    'Accept-Encoding': getReqHeader("Accept-Encoding"),
+                    'Accept-Encoding': 'identity',
                     'Connection': 'keep-alive',
                     'Cache-Control': 'max-age=0',
                     'Authorization': `Bearer ${token}`
