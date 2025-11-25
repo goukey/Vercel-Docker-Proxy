@@ -370,400 +370,368 @@ async function searchInterface() {
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18" fill="#ffffff" width="110" height="85">
 					<path d="M23.763 6.886c-.065-.053-.673-.512-1.954-.512-.32 0-.659.03-1.01.087-.248-1.703-1.651-2.533-1.716-2.57l-.345-.2-.227.328a4.596 4.596 0 0 0-.611 1.433c-.23.972-.09 1.884.403 2.666-.596.331-1.546.418-1.744.42H.752a.753.753 0 0 0-.75.749c-.007 1.456.233 2.864.692 4.07.545 1.43 1.355 2.483 2.409 3.13 1.181.725 3.104 1.14 5.276 1.14 1.016 0 2.03-.092 2.93-.266 1.417-.273 2.705-.742 3.826-1.391a10.497 10.497 0 0 0 2.61-2.14c1.252-1.42 1.998-3.005 2.553-4.408.075.003.148.005.221.005 1.371 0 2.215-.55 2.68-1.01.505-.5.685-.998.704-1.053L24 7.076l-.237-.19Z"></path>
 					<path d="M2.216 8.075h2.119a.186.186 0 0 0 .185-.186V6a.186.186 0 0 0-.185-.186H2.216A.186.186 0 0 0 2.031 6v1.89c0 .103.083.186.185.186Zm2.92 0h2.118a.185.185 0 0 0 .185-.186V6a.185.185 0 0 0-.185-.186H5.136A.185.185 0 0 0 4.95 6v1.89c0 .103.083.186.186.186Zm2.964 0h2.118a.186.186 0 0 0 .185-.186V6a.186.186 0 0 0-.185-.186H8.1A.185.185 0 0 0 7.914 6v1.89c0 .103.083.186.186.186Zm2.928 0h2.119a.185.185 0 0 0 .185-.186V6a.185.185 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm-5.892-2.72h2.118a.185.185 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186H5.136a.186.186 0 0 0-.186.186v1.89c0 .103.083.186.186.186Zm2.964 0h2.118a.186.186 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186H8.1a.186.186 0 0 0-.186.186v1.89c0 .103.083.186.186.186Zm2.928 0h2.119a.185.185 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm0-2.72h2.119a.186.186 0 0 0 .185-.186V.56a.185.185 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm2.955 5.44h2.118a.185.185 0 0 0 .186-.186V6a.185.185 0 0 0-.186-.186h-2.118a.185.185 0 0 0-.185.186v1.89c0 .103.083.186.185.186Z"></path>
-373: 				</svg>
-374: 			</div>
-375: 			<h1 class="title">Docker Hub 镜像搜索</h1>
-376: 			<p class="subtitle">快速查找、下载和部署 Docker 容器镜像</p>
-377: 			<div class="search-container">
-378: 				<input type="text" id="search-input" placeholder="输入关键词搜索镜像，如: nginx, mysql, redis...">
-379: 				<button id="search-button" title="搜索">
-380: 					<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-381: 						<path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
-382: 					</svg>
-383: 				</button>
-384: 			</div>
-385: 			<p class="tips">基于 Cloudflare Workers / Pages 构建，利用全球边缘网络实现毫秒级响应。</p>
-386: 		</div>
-387: 		<script>
-388: 		function performSearch() {
-389: 			const query = document.getElementById('search-input').value;
-390: 			if (query) {
-391: 				window.location.href = '/search?q=' + encodeURIComponent(query);
-392: 			}
-393: 		}
-394: 	
-395: 		document.getElementById('search-button').addEventListener('click', performSearch);
-396: 		document.getElementById('search-input').addEventListener('keypress', function(event) {
-397: 			if (event.key === 'Enter') {
-398: 				performSearch();
-399: 			}
-400: 		});
-401: 
-402: 		// 添加焦点在搜索框
-403: 		window.addEventListener('load', function() {
-404: 			document.getElementById('search-input').focus();
-405: 		});
-406: 		</script>
-407: 	</body>
-408: 	</html>
-409: 	`;
-    410: return html;
-    411:
+					<path d="M2.216 8.075h2.119a.186.186 0 0 0 .185-.186V6a.186.186 0 0 0-.185-.186H2.216A.186.186 0 0 0 2.031 6v1.89c0 .103.083.186.185.186Zm2.92 0h2.118a.185.185 0 0 0 .185-.186V6a.185.185 0 0 0-.185-.186H5.136A.185.185 0 0 0 4.95 6v1.89c0 .103.083.186.186.186Zm2.964 0h2.118a.186.186 0 0 0 .185-.186V6a.186.186 0 0 0-.185-.186H8.1A.185.185 0 0 0 7.914 6v1.89c0 .103.083.186.186.186Zm2.928 0h2.119a.185.185 0 0 0 .185-.186V6a.185.185 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm-5.892-2.72h2.118a.185.185 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186H5.136a.186.186 0 0 0-.186.186v1.89c0 .103.083.186.186.186Zm2.964 0h2.118a.186.186 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186H8.1a.186.186 0 0 0-.186.186v1.89c0 .103.083.186.186.186Zm2.928 0h2.119a.185.185 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm0-2.72h2.119a.186.186 0 0 0 .185-.186V.56a.185.185 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm2.955 5.44h2.118a.185.185 0 0 0 .186-.186V6a.185.185 0 0 0-.186-.186h-2.118a.185.185 0 0 0-.185.186v1.89c0 .103.083.186.185.186Z"></path>
+				</svg>
+			</div>
+			<h1 class="title">Docker Hub 镜像搜索</h1>
+			<p class="subtitle">快速查找、下载和部署 Docker 容器镜像</p>
+			<div class="search-container">
+				<input type="text" id="search-input" placeholder="输入关键词搜索镜像，如: nginx, mysql, redis...">
+				<button id="search-button" title="搜索">
+					<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+						<path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+					</svg>
+				</button>
+			</div>
+			<p class="tips">基于 Cloudflare Workers / Pages 构建，利用全球边缘网络实现毫秒级响应。</p>
+		</div>
+		<script>
+		function performSearch() {
+			const query = document.getElementById('search-input').value;
+			if (query) {
+				window.location.href = '/search?q=' + encodeURIComponent(query);
+			}
+		}
+	
+		document.getElementById('search-button').addEventListener('click', performSearch);
+		document.getElementById('search-input').addEventListener('keypress', function(event) {
+			if (event.key === 'Enter') {
+				performSearch();
+			}
+		});
+
+		// 添加焦点在搜索框
+		window.addEventListener('load', function() {
+			document.getElementById('search-input').focus();
+		});
+		</script>
+	</body>
+	</html>
+	`;
+    return html;
 }
-412:
-413: export const config = {
-    414: runtime: 'edge',
-    415: };
-416:
-417: export default async function handler(request) {
-    418: const env = process.env;
-    419: const ctx = {}; // Mock ctx if needed, though not used in logic
-    420:
-    421: const getReqHeader = (key) => request.headers.get(key); // 获取请求头
-    422:
-    423: let url = new URL(request.url); // 解析请求URL
-    424: const userAgentHeader = request.headers.get('User-Agent');
-    425: const userAgent = userAgentHeader ? userAgentHeader.toLowerCase() : "null";
-    426: if (env.UA) 屏蔽爬虫UA = 屏蔽爬虫UA.concat(await ADD(env.UA));
-    427: const workers_url = `https://${url.hostname}`;
-    428:
-    429:     // 获取请求参数中的 ns
-    430: const ns = url.searchParams.get('ns');
-    431: const hostname = url.searchParams.get('hubhost') || url.hostname;
-    432: const hostTop = hostname.split('.')[0]; // 获取主机名的第一部分
-    433:
-    434: let checkHost; // 在这里定义 checkHost 变量
-    435:     // 如果存在 ns 参数，优先使用它来确定 hub_host
-    436: if (ns) {
-        437: if (ns === 'docker.io') {
-            438: hub_host = 'registry-1.docker.io'; // 设置上游地址为 registry-1.docker.io
-            439:
+
+export const config = {
+    runtime: 'edge',
+};
+
+export default async function handler(request) {
+    const env = process.env;
+    const ctx = {}; // Mock ctx if needed, though not used in logic
+
+    const getReqHeader = (key) => request.headers.get(key); // 获取请求头
+
+    let url = new URL(request.url); // 解析请求URL
+    const userAgentHeader = request.headers.get('User-Agent');
+    const userAgent = userAgentHeader ? userAgentHeader.toLowerCase() : "null";
+    if (env.UA) 屏蔽爬虫UA = 屏蔽爬虫UA.concat(await ADD(env.UA));
+    const workers_url = `https://${url.hostname}`;
+
+    // 获取请求参数中的 ns
+    const ns = url.searchParams.get('ns');
+    const hostname = url.searchParams.get('hubhost') || url.hostname;
+    const hostTop = hostname.split('.')[0]; // 获取主机名的第一部分
+
+    let checkHost; // 在这里定义 checkHost 变量
+    // 如果存在 ns 参数，优先使用它来确定 hub_host
+    if (ns) {
+        if (ns === 'docker.io') {
+            hub_host = 'registry-1.docker.io'; // 设置上游地址为 registry-1.docker.io
         } else {
-            440: hub_host = ns; // 直接使用 ns 作为 hub_host
-            441:
+            hub_host = ns; // 直接使用 ns 作为 hub_host
         }
-        442:
     } else {
-        443: checkHost = routeByHosts(hostTop);
-        444: hub_host = checkHost[0]; // 获取上游地址
-        445:
+        checkHost = routeByHosts(hostTop);
+        hub_host = checkHost[0]; // 获取上游地址
     }
-    446:
-    447: const fakePage = checkHost ? checkHost[1] : false; // 确保 fakePage 不为 undefined
-    448: console.log(`域名头部: ${hostTop} 反代地址: ${hub_host} searchInterface: ${fakePage}`);
-    449:     // 更改请求的主机名
-    450: url.hostname = hub_host;
-    451: const hubParams = ['/v1/search', '/v1/repositories'];
-    452: if (屏蔽爬虫UA.some(fxxk => userAgent.includes(fxxk)) && 屏蔽爬虫UA.length > 0) {
-        453:         // 首页改成一个nginx伪装页
-        454: return new Response(await nginx(), {
-            455: headers: {
-            456: 'Content-Type': 'text/html; charset=UTF-8',
-            457:             },
-            458:         });
-    459:
-} else if ((userAgent && userAgent.includes('mozilla')) || hubParams.some(param => url.pathname.includes(param))) {
-    460: if (url.pathname == '/') {
-        461: if (env.URL302) {
-            462: return Response.redirect(env.URL302, 302);
-            463:
-        } else if (env.URL) {
-            464: if (env.URL.toLowerCase() == 'nginx') {
-                465:                     //首页改成一个nginx伪装页
-                466: return new Response(await nginx(), {
-                    467: headers: {
-                    468: 'Content-Type': 'text/html; charset=UTF-8',
-                    469:                         },
-                    470:                     });
-            471:
-        } else return fetch(new Request(env.URL, request));
-        472:
-    } else {
-        473: if (fakePage) return new Response(await searchInterface(), {
-            474: headers: {
-            475: 'Content-Type': 'text/html; charset=UTF-8',
-            476:                     },
-            477:                 });
-    478:
-}
-479:         } else {
-    480:             // 新增逻辑：/v1/ 路径特殊处理
-    481: if (url.pathname.startsWith('/v1/')) {
-        482: url.hostname = 'index.docker.io';
-        483:
-    } else if (fakePage) {
-        484: url.hostname = 'hub.docker.com';
-        485:
-    }
-    486: if (url.searchParams.get('q')?.includes('library/') && url.searchParams.get('q') != 'library/') {
-        487: const search = url.searchParams.get('q');
-        488: url.searchParams.set('q', search.replace('library/', ''));
-        489:
-    }
-    490: const newRequest = new Request(url, request);
-    491: return fetch(newRequest);
-    492:
-}
-493:     }
-494:
-495:     // 修改包含 %2F 和 %3A 的请求
-496: if (!/%2F/.test(url.search) && /%3A/.test(url.toString())) {
-    497: let modifiedUrl = url.toString().replace(/%3A(?=.*?&)/, '%3Alibrary%2F');
-    498: url = new URL(modifiedUrl);
-    499: console.log(`handle_url: ${url}`);
-    500:
-}
-501:
-502:     // 处理token请求
-503: if (url.pathname.includes('/token')) {
-    504: let token_parameter = {
-        505: headers: {
-            506:                 'Host': 'auth.docker.io',
-            507:                 'User-Agent': getReqHeader("User-Agent"),
-                508: 'Accept': getReqHeader("Accept"),
-                    509: 'Accept-Language': getReqHeader("Accept-Language"),
-                        510: 'Accept-Encoding': getReqHeader("Accept-Encoding"),
-                            511: 'Connection': 'keep-alive',
-                                512: 'Cache-Control': 'max-age=0'
-    513:
-}
-514:         };
-515: let token_url = auth_url + url.pathname + url.search;
-516: return fetch(new Request(token_url, request), token_parameter);
-517:     }
-518:
-519:     // 修改 /v2/ 请求路径
-520: if (hub_host == 'registry-1.docker.io' && /^\/v2\/[^/]+\/[^/]+\/[^/]+$/.test(url.pathname) && !/^\/v2\/library/.test(url.pathname)) {
-    521:         //url.pathname = url.pathname.replace(/\/v2\//, '/v2/library/');
-    522: url.pathname = '/v2/library/' + url.pathname.split('/v2/')[1];
-    523: console.log(`modified_url: ${url.pathname}`);
-    524:
-}
-525:
-526:     // 新增：/v2/、/manifests/、/blobs/、/tags/ 先获取token再请求
-527: if (
-    528: url.pathname.startsWith('/v2/') &&
-        529: (
-            530: url.pathname.includes('/manifests/') ||
-                531: url.pathname.includes('/blobs/') ||
-                    532: url.pathname.includes('/tags/')
-533:             || url.pathname.endsWith('/tags/list')
-534:         )
-535:     ) {
-    536:         // 提取镜像名
-    537: let repo = '';
-    538: const v2Match = url.pathname.match(/^\/v2\/(.+?)(?:\/(manifests|blobs|tags)\/)/);
-    539: if (v2Match) {
-        540: repo = v2Match[1];
-        541:
-    }
-    542: if (repo) {
-        543: const tokenUrl = `${auth_url}/token?service=registry.docker.io&scope=repository:${repo}:pull`;
-        544: const tokenRes = await fetch(tokenUrl, {
-            545: headers: {
-            546: 'User-Agent': getReqHeader("User-Agent"),
-            547: 'Accept': getReqHeader("Accept"),
-            548: 'Accept-Language': getReqHeader("Accept-Language"),
-            549: 'Accept-Encoding': getReqHeader("Accept-Encoding"),
-            550: 'Connection': 'keep-alive',
-            551: 'Cache-Control': 'max-age=0'
-552:
+
+    const fakePage = checkHost ? checkHost[1] : false; // 确保 fakePage 不为 undefined
+    console.log(`域名头部: ${hostTop} 反代地址: ${hub_host} searchInterface: ${fakePage}`);
+    // 更改请求的主机名
+    url.hostname = hub_host;
+    const hubParams = ['/v1/search', '/v1/repositories'];
+    if (屏蔽爬虫UA.some(fxxk => userAgent.includes(fxxk)) && 屏蔽爬虫UA.length > 0) {
+        // 首页改成一个nginx伪装页
+        return new Response(await nginx(), {
+            headers: {
+                'Content-Type': 'text/html; charset=UTF-8',
+            },
+        });
+    } else if ((userAgent && userAgent.includes('mozilla')) || hubParams.some(param => url.pathname.includes(param))) {
+        if (url.pathname == '/') {
+            if (env.URL302) {
+                return Response.redirect(env.URL302, 302);
+            } else if (env.URL) {
+                if (env.URL.toLowerCase() == 'nginx') {
+                    //首页改成一个nginx伪装页
+                    return new Response(await nginx(), {
+                        headers: {
+                            'Content-Type': 'text/html; charset=UTF-8',
+                        },
+                    });
+                } else return fetch(new Request(env.URL, request));
+            } else {
+                if (fakePage) return new Response(await searchInterface(), {
+                    headers: {
+                        'Content-Type': 'text/html; charset=UTF-8',
+                    },
+                });
+            }
+        } else {
+            // 新增逻辑：/v1/ 路径特殊处理
+            if (url.pathname.startsWith('/v1/')) {
+                url.hostname = 'index.docker.io';
+            } else if (fakePage) {
+                url.hostname = 'hub.docker.com';
+            }
+            if (url.searchParams.get('q')?.includes('library/') && url.searchParams.get('q') != 'library/') {
+                const search = url.searchParams.get('q');
+                url.searchParams.set('q', search.replace('library/', ''));
+            }
+            const newRequest = new Request(url, request);
+            return fetch(newRequest);
         }
-553:             });
-    554: const tokenData = await tokenRes.json();
-    555: const token = tokenData.token;
-    556: let parameter = {
-        557: headers: {
-            558:                     'Host': hub_host,
-            559:                     'User-Agent': getReqHeader("User-Agent"),
-                560: 'Accept': getReqHeader("Accept"),
-                    561: 'Accept-Language': getReqHeader("Accept-Language"),
-                        562: 'Accept-Encoding': getReqHeader("Accept-Encoding"),
-                            563: 'Connection': 'keep-alive',
-                                564: 'Cache-Control': 'max-age=0',
-                                    565: 'Authorization': `Bearer ${token}`
-    566:
-},
-567: cacheTtl: 3600
-568:             };
-569: if (request.headers.has("X-Amz-Content-Sha256")) {
-    570: parameter.headers['X-Amz-Content-Sha256'] = getReqHeader("X-Amz-Content-Sha256");
-    571:
-}
-572: let original_response = await fetch(new Request(url, request), parameter);
-573: let original_text = original_response.body;
-574: let response_headers = original_response.headers;
-575: let new_response_headers = new Headers(response_headers);
-576: let status = original_response.status;
-577: if (new_response_headers.get("Www-Authenticate")) {
-    578: let auth = new_response_headers.get("Www-Authenticate");
-    579: let re = new RegExp(auth_url, 'g');
-    580: new_response_headers.set("Www-Authenticate", response_headers.get("Www-Authenticate").replace(re, workers_url));
-    581:
-}
-582: if (new_response_headers.get("Location")) {
-    583: const location = new_response_headers.get("Location");
-    584: console.info(`Found redirection location, redirecting to ${location}`);
-    585: return httpHandler(request, location, hub_host);
-    586:
-}
-587: let response = new Response(original_text, {
-    588: status,
-    589: headers: new_response_headers
-590:             });
-591: return response;
-592:         }
-593:     }
-594:
-595:     // 构造请求参数
-596: let parameter = {
-    597: headers: {
-        598:             'Host': hub_host,
-        599:             'User-Agent': getReqHeader("User-Agent"),
-            600: 'Accept': getReqHeader("Accept"),
-                601: 'Accept-Language': getReqHeader("Accept-Language"),
-                    602: 'Accept-Encoding': getReqHeader("Accept-Encoding"),
-                        603: 'Connection': 'keep-alive',
-                            604: 'Cache-Control': 'max-age=0'
-605:         },
-606: cacheTtl: 3600 // 缓存时间
-607:     };
-608:
-609:     // 添加Authorization头
-610: if (request.headers.has("Authorization")) {
-    611: parameter.headers.Authorization = getReqHeader("Authorization");
-    612:
-}
-613:
-614:     // 添加可能存在字段X-Amz-Content-Sha256
-615: if (request.headers.has("X-Amz-Content-Sha256")) {
-    616: parameter.headers['X-Amz-Content-Sha256'] = getReqHeader("X-Amz-Content-Sha256");
-    617:
-}
-618:
-619:     // 发起请求并处理响应
-620: let original_response = await fetch(new Request(url, request), parameter);
-621: let original_text = original_response.body;
-622: let response_headers = original_response.headers;
-623: let new_response_headers = new Headers(response_headers);
-624: let status = original_response.status;
-625:
-626:     // 修改 Www-Authenticate 头
-627: if (new_response_headers.get("Www-Authenticate")) {
-    628: let auth = new_response_headers.get("Www-Authenticate");
-    629: let re = new RegExp(auth_url, 'g');
-    630: new_response_headers.set("Www-Authenticate", response_headers.get("Www-Authenticate").replace(re, workers_url));
-    631:
-}
-632:
-633:     // 处理重定向
-634: if (new_response_headers.get("Location")) {
-    635: const location = new_response_headers.get("Location");
-    636: console.info(`Found redirection location, redirecting to ${location}`);
-    637: return httpHandler(request, location, hub_host);
-    638:
-}
-639:
-640:     // 返回修改后的响应
-641: let response = new Response(original_text, {
-    642: status,
-    643: headers: new_response_headers
-644:     });
-645: return response;
-646: }
-647:
-648: /**
-649:  * 处理HTTP请求
-650:  * @param {Request} req 请求对象
-651:  * @param {string} pathname 请求路径
-652:  * @param {string} baseHost 基地址
-653:  */
-654: function httpHandler(req, pathname, baseHost) {
-    655: const reqHdrRaw = req.headers;
-    656:
-    657: 	// 处理预检请求
-    658: if (req.method === 'OPTIONS' &&
-        659: reqHdrRaw.has('access-control-request-headers')
-    660: 	) {
-        661: return new Response(null, PREFLIGHT_INIT);
-        662:
     }
-    663:
-    664: let rawLen = '';
-    665:
-    666: const reqHdrNew = new Headers(reqHdrRaw);
-    667:
-    668: reqHdrNew.delete("Authorization"); // 修复s3错误
-    669:
-    670: const refer = reqHdrNew.get('referer');
-    671:
-    672: let urlStr = pathname;
-    673:
-    674: const urlObj = newUrl(urlStr, 'https://' + baseHost);
-    675:
-    676: 	/** @type {RequestInit} */
-    677: const reqInit = {
-        678: method: req.method,
-        679: headers: reqHdrNew,
-        680: redirect: 'follow',
-        681: body: req.body
-682: 	};
-    683: return proxy(urlObj, reqInit, rawLen);
-    684:
-}
-685:
-686: /**
-687:  * 代理请求
-688:  * @param {URL} urlObj URL对象
-689:  * @param {RequestInit} reqInit 请求初始化对象
-690:  * @param {string} rawLen 原始长度
-691:  */
-692: async function proxy(urlObj, reqInit, rawLen) {
-    693: const res = await fetch(urlObj.href, reqInit);
-    694: const resHdrOld = res.headers;
-    695: const resHdrNew = new Headers(resHdrOld);
-    696:
-    697: 	// 验证长度
-    698: if (rawLen) {
-        699: const newLen = resHdrOld.get('content-length') || '';
-        700: const badLen = (rawLen !== newLen);
-        701:
-        702: if (badLen) {
-            703: return makeRes(res.body, 400, {
-                704: '--error': `bad len: ${newLen}, except: ${rawLen}`,
-                705: 'access-control-expose-headers': '--error',
-                706: 			});
-        707:
+
+    // 修改包含 %2F 和 %3A 的请求
+    if (!/%2F/.test(url.search) && /%3A/.test(url.toString())) {
+        let modifiedUrl = url.toString().replace(/%3A(?=.*?&)/, '%3Alibrary%2F');
+        url = new URL(modifiedUrl);
+        console.log(`handle_url: ${url}`);
     }
-    708:
+
+    // 处理token请求
+    if (url.pathname.includes('/token')) {
+        let token_parameter = {
+            headers: {
+                'Host': 'auth.docker.io',
+                'User-Agent': getReqHeader("User-Agent"),
+                'Accept': getReqHeader("Accept"),
+                'Accept-Language': getReqHeader("Accept-Language"),
+                'Accept-Encoding': getReqHeader("Accept-Encoding"),
+                'Connection': 'keep-alive',
+                'Cache-Control': 'max-age=0'
+            }
+        };
+        let token_url = auth_url + url.pathname + url.search;
+        return fetch(new Request(token_url, request), token_parameter);
+    }
+
+    // 修改 /v2/ 请求路径
+    if (hub_host == 'registry-1.docker.io' && /^\/v2\/[^/]+\/[^/]+\/[^/]+$/.test(url.pathname) && !/^\/v2\/library/.test(url.pathname)) {
+        //url.pathname = url.pathname.replace(/\/v2\//, '/v2/library/');
+        url.pathname = '/v2/library/' + url.pathname.split('/v2/')[1];
+        console.log(`modified_url: ${url.pathname}`);
+    }
+
+    // 新增：/v2/、/manifests/、/blobs/、/tags/ 先获取token再请求
+    if (
+        url.pathname.startsWith('/v2/') &&
+        (
+            url.pathname.includes('/manifests/') ||
+            url.pathname.includes('/blobs/') ||
+            url.pathname.includes('/tags/')
+            || url.pathname.endsWith('/tags/list')
+        )
+    ) {
+        // 提取镜像名
+        let repo = '';
+        const v2Match = url.pathname.match(/^\/v2\/(.+?)(?:\/(manifests|blobs|tags)\/)/);
+        if (v2Match) {
+            repo = v2Match[1];
+        }
+        if (repo) {
+            const tokenUrl = `${auth_url}/token?service=registry.docker.io&scope=repository:${repo}:pull`;
+            const tokenRes = await fetch(tokenUrl, {
+                headers: {
+                    'User-Agent': getReqHeader("User-Agent"),
+                    'Accept': getReqHeader("Accept"),
+                    'Accept-Language': getReqHeader("Accept-Language"),
+                    'Accept-Encoding': getReqHeader("Accept-Encoding"),
+                    'Connection': 'keep-alive',
+                    'Cache-Control': 'max-age=0'
+                }
+            });
+            const tokenData = await tokenRes.json();
+            const token = tokenData.token;
+            let parameter = {
+                headers: {
+                    'Host': hub_host,
+                    'User-Agent': getReqHeader("User-Agent"),
+                    'Accept': getReqHeader("Accept"),
+                    'Accept-Language': getReqHeader("Accept-Language"),
+                    'Accept-Encoding': getReqHeader("Accept-Encoding"),
+                    'Connection': 'keep-alive',
+                    'Cache-Control': 'max-age=0',
+                    'Authorization': `Bearer ${token}`
+                },
+                cacheTtl: 3600
+            };
+            if (request.headers.has("X-Amz-Content-Sha256")) {
+                parameter.headers['X-Amz-Content-Sha256'] = getReqHeader("X-Amz-Content-Sha256");
+            }
+            let original_response = await fetch(new Request(url, request), parameter);
+            let original_text = original_response.body;
+            let response_headers = original_response.headers;
+            let new_response_headers = new Headers(response_headers);
+            let status = original_response.status;
+            if (new_response_headers.get("Www-Authenticate")) {
+                let auth = new_response_headers.get("Www-Authenticate");
+                let re = new RegExp(auth_url, 'g');
+                new_response_headers.set("Www-Authenticate", response_headers.get("Www-Authenticate").replace(re, workers_url));
+            }
+            if (new_response_headers.get("Location")) {
+                const location = new_response_headers.get("Location");
+                console.info(`Found redirection location, redirecting to ${location}`);
+                return httpHandler(request, location, hub_host);
+            }
+            let response = new Response(original_text, {
+                status,
+                headers: new_response_headers
+            });
+            return response;
+        }
+    }
+
+    // 构造请求参数
+    let parameter = {
+        headers: {
+            'Host': hub_host,
+            'User-Agent': getReqHeader("User-Agent"),
+            'Accept': getReqHeader("Accept"),
+            'Accept-Language': getReqHeader("Accept-Language"),
+            'Accept-Encoding': getReqHeader("Accept-Encoding"),
+            'Connection': 'keep-alive',
+            'Cache-Control': 'max-age=0'
+        },
+        cacheTtl: 3600 // 缓存时间
+    };
+
+    // 添加Authorization头
+    if (request.headers.has("Authorization")) {
+        parameter.headers.Authorization = getReqHeader("Authorization");
+    }
+
+    // 添加可能存在字段X-Amz-Content-Sha256
+    if (request.headers.has("X-Amz-Content-Sha256")) {
+        parameter.headers['X-Amz-Content-Sha256'] = getReqHeader("X-Amz-Content-Sha256");
+    }
+
+    // 发起请求并处理响应
+    let original_response = await fetch(new Request(url, request), parameter);
+    let original_text = original_response.body;
+    let response_headers = original_response.headers;
+    let new_response_headers = new Headers(response_headers);
+    let status = original_response.status;
+
+    // 修改 Www-Authenticate 头
+    if (new_response_headers.get("Www-Authenticate")) {
+        let auth = new_response_headers.get("Www-Authenticate");
+        let re = new RegExp(auth_url, 'g');
+        new_response_headers.set("Www-Authenticate", response_headers.get("Www-Authenticate").replace(re, workers_url));
+    }
+
+    // 处理重定向
+    if (new_response_headers.get("Location")) {
+        const location = new_response_headers.get("Location");
+        console.info(`Found redirection location, redirecting to ${location}`);
+        return httpHandler(request, location, hub_host);
+    }
+
+    // 返回修改后的响应
+    let response = new Response(original_text, {
+        status,
+        headers: new_response_headers
+    });
+    return response;
 }
-709: const status = res.status;
-710: resHdrNew.set('access-control-expose-headers', '*');
-711: resHdrNew.set('access-control-allow-origin', '*');
-712: resHdrNew.set('Cache-Control', 'max-age=1500');
-713:
-714: 	// 删除不必要的头
-715: resHdrNew.delete('content-security-policy');
-716: resHdrNew.delete('content-security-policy-report-only');
-717: resHdrNew.delete('clear-site-data');
-718:
-719:     // 确保 Content-Length 存在 (如果原响应中有)
-720: if (resHdrOld.has('content-length')) {
-    721: resHdrNew.set('Content-Length', resHdrOld.get('content-length'));
-    722:
+
+/**
+ * 处理HTTP请求
+ * @param {Request} req 请求对象
+ * @param {string} pathname 请求路径
+ * @param {string} baseHost 基地址
+ */
+function httpHandler(req, pathname, baseHost) {
+    const reqHdrRaw = req.headers;
+
+    // 处理预检请求
+    if (req.method === 'OPTIONS' &&
+        reqHdrRaw.has('access-control-request-headers')
+    ) {
+        return new Response(null, PREFLIGHT_INIT);
+    }
+
+    let rawLen = '';
+
+    const reqHdrNew = new Headers(reqHdrRaw);
+
+    reqHdrNew.delete("Authorization"); // 修复s3错误
+
+    const refer = reqHdrNew.get('referer');
+
+    let urlStr = pathname;
+
+    const urlObj = newUrl(urlStr, 'https://' + baseHost);
+
+    /** @type {RequestInit} */
+    const reqInit = {
+        method: req.method,
+        headers: reqHdrNew,
+        redirect: 'follow',
+        body: req.body
+    };
+    return proxy(urlObj, reqInit, rawLen);
 }
-723:
-724: return new Response(res.body, {
-    725: status,
-    726: headers: resHdrNew
-727: 	});
-728: }
-729:
-730: async function ADD(envadd) {
-    731: var addtext = envadd.replace(/[	 |"'\r\n]+/g, ',').replace(/,+/g, ',');	// 将空格、双引号、单引号和换行符替换为逗号
-    732: if (addtext.charAt(0) == ',') addtext = addtext.slice(1);
-    733: if (addtext.charAt(addtext.length - 1) == ',') addtext = addtext.slice(0, addtext.length - 1);
-    734: const add = addtext.split(',');
-    735: return add;
-    736:
+
+/**
+ * 代理请求
+ * @param {URL} urlObj URL对象
+ * @param {RequestInit} reqInit 请求初始化对象
+ * @param {string} rawLen 原始长度
+ */
+async function proxy(urlObj, reqInit, rawLen) {
+    const res = await fetch(urlObj.href, reqInit);
+    const resHdrOld = res.headers;
+    const resHdrNew = new Headers(resHdrOld);
+
+    // 验证长度
+    if (rawLen) {
+        const newLen = resHdrOld.get('content-length') || '';
+        const badLen = (rawLen !== newLen);
+
+        if (badLen) {
+            return makeRes(res.body, 400, {
+                '--error': `bad len: ${newLen}, except: ${rawLen}`,
+                'access-control-expose-headers': '--error',
+            });
+        }
+    }
+    const status = res.status;
+    resHdrNew.set('access-control-expose-headers', '*');
+    resHdrNew.set('access-control-allow-origin', '*');
+    resHdrNew.set('Cache-Control', 'max-age=1500');
+
+    // 删除不必要的头
+    resHdrNew.delete('content-security-policy');
+    resHdrNew.delete('content-security-policy-report-only');
+    resHdrNew.delete('clear-site-data');
+
+    // 确保 Content-Length 存在 (如果原响应中有)
+    if (resHdrOld.has('content-length')) {
+        resHdrNew.set('Content-Length', resHdrOld.get('content-length'));
+    }
+
+    return new Response(res.body, {
+        status,
+        headers: resHdrNew
+    });
+}
+
+async function ADD(envadd) {
+    var addtext = envadd.replace(/[	 |"'\r\n]+/g, ',').replace(/,+/g, ',');	// 将空格、双引号、单引号和换行符替换为逗号
+    if (addtext.charAt(0) == ',') addtext = addtext.slice(1);
+    if (addtext.charAt(addtext.length - 1) == ',') addtext = addtext.slice(0, addtext.length - 1);
+    const add = addtext.split(',');
+    return add;
 }
