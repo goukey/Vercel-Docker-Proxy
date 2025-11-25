@@ -600,7 +600,7 @@ export default async function handler(request) {
             'User-Agent': getReqHeader("User-Agent"),
             'Accept': getReqHeader("Accept"),
             'Accept-Language': getReqHeader("Accept-Language"),
-            'Accept-Encoding': getReqHeader("Accept-Encoding"),
+            'Accept-Encoding': 'identity',
             'Connection': 'keep-alive',
             'Cache-Control': 'max-age=0'
         },
@@ -659,79 +659,65 @@ function httpHandler(req, pathname, baseHost) {
     if (req.method === 'OPTIONS' &&
         reqHdrRaw.has('access-control-request-headers')
     ) {
-        return new Response(null, PREFLIGHT_INIT);
+
+        /** @type {RequestInit} */
+        const reqInit = {
+            method: req.method,
+            headers: reqHdrNew,
+            redirect: 'follow',
+            body: req.body
+        };
+        return proxy(urlObj, reqInit, rawLen);
     }
 
-    let rawLen = '';
+    /**
+     * 代理请求
+     * @param {URL} urlObj URL对象
+     * @param {RequestInit} reqInit 请求初始化对象
+     * @param {string} rawLen 原始长度
+     */
+    async function proxy(urlObj, reqInit, rawLen) {
+        const res = await fetch(urlObj.href, reqInit);
+        const resHdrOld = res.headers;
+        const resHdrNew = new Headers(resHdrOld);
 
-    const reqHdrNew = new Headers(reqHdrRaw);
+        // 验证长度
+        if (rawLen) {
+            const newLen = resHdrOld.get('content-length') || '';
+            const badLen = (rawLen !== newLen);
 
-    reqHdrNew.delete("Authorization"); // 修复s3错误
-
-    const refer = reqHdrNew.get('referer');
-
-    let urlStr = pathname;
-
-    const urlObj = newUrl(urlStr, 'https://' + baseHost);
-
-    /** @type {RequestInit} */
-    const reqInit = {
-        method: req.method,
-        headers: reqHdrNew,
-        redirect: 'follow',
-        body: req.body
-    };
-    return proxy(urlObj, reqInit, rawLen);
-}
-
-/**
- * 代理请求
- * @param {URL} urlObj URL对象
- * @param {RequestInit} reqInit 请求初始化对象
- * @param {string} rawLen 原始长度
- */
-async function proxy(urlObj, reqInit, rawLen) {
-    const res = await fetch(urlObj.href, reqInit);
-    const resHdrOld = res.headers;
-    const resHdrNew = new Headers(resHdrOld);
-
-    // 验证长度
-    if (rawLen) {
-        const newLen = resHdrOld.get('content-length') || '';
-        const badLen = (rawLen !== newLen);
-
-        if (badLen) {
-            return makeRes(res.body, 400, {
-                '--error': `bad len: ${newLen}, except: ${rawLen}`,
-                'access-control-expose-headers': '--error',
-            });
+            if (badLen) {
+                return makeRes(res.body, 400, {
+                    '--error': `bad len: ${newLen}, except: ${rawLen}`,
+                    'access-control-expose-headers': '--error',
+                });
+            }
         }
+        const status = res.status;
+        resHdrNew.set('access-control-expose-headers', '*');
+        resHdrNew.set('access-control-allow-origin', '*');
+        resHdrNew.set('Cache-Control', 'max-age=1500');
+
+        // 删除不必要的头
+        resHdrNew.delete('content-security-policy');
+        resHdrNew.delete('content-security-policy-report-only');
+        resHdrNew.delete('clear-site-data');
+
+        // 确保 Content-Length 存在 (如果原响应中有)
+        if (resHdrOld.has('content-length')) {
+            resHdrNew.set('Content-Length', resHdrOld.get('content-length'));
+        }
+
+        return new Response(res.body, {
+            status,
+            headers: resHdrNew
+        });
     }
-    const status = res.status;
-    resHdrNew.set('access-control-expose-headers', '*');
-    resHdrNew.set('access-control-allow-origin', '*');
-    resHdrNew.set('Cache-Control', 'max-age=1500');
 
-    // 删除不必要的头
-    resHdrNew.delete('content-security-policy');
-    resHdrNew.delete('content-security-policy-report-only');
-    resHdrNew.delete('clear-site-data');
-
-    // 确保 Content-Length 存在 (如果原响应中有)
-    if (resHdrOld.has('content-length')) {
-        resHdrNew.set('Content-Length', resHdrOld.get('content-length'));
+    async function ADD(envadd) {
+        var addtext = envadd.replace(/[	 |"'\r\n]+/g, ',').replace(/,+/g, ',');	// 将空格、双引号、单引号和换行符替换为逗号
+        if (addtext.charAt(0) == ',') addtext = addtext.slice(1);
+        if (addtext.charAt(addtext.length - 1) == ',') addtext = addtext.slice(0, addtext.length - 1);
+        const add = addtext.split(',');
+        return add;
     }
-
-    return new Response(res.body, {
-        status,
-        headers: resHdrNew
-    });
-}
-
-async function ADD(envadd) {
-    var addtext = envadd.replace(/[	 |"'\r\n]+/g, ',').replace(/,+/g, ',');	// 将空格、双引号、单引号和换行符替换为逗号
-    if (addtext.charAt(0) == ',') addtext = addtext.slice(1);
-    if (addtext.charAt(addtext.length - 1) == ',') addtext = addtext.slice(0, addtext.length - 1);
-    const add = addtext.split(',');
-    return add;
-}
