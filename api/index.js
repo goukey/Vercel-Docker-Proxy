@@ -370,7 +370,6 @@ async function searchInterface() {
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18" fill="#ffffff" width="110" height="85">
 					<path d="M23.763 6.886c-.065-.053-.673-.512-1.954-.512-.32 0-.659.03-1.01.087-.248-1.703-1.651-2.533-1.716-2.57l-.345-.2-.227.328a4.596 4.596 0 0 0-.611 1.433c-.23.972-.09 1.884.403 2.666-.596.331-1.546.418-1.744.42H.752a.753.753 0 0 0-.75.749c-.007 1.456.233 2.864.692 4.07.545 1.43 1.355 2.483 2.409 3.13 1.181.725 3.104 1.14 5.276 1.14 1.016 0 2.03-.092 2.93-.266 1.417-.273 2.705-.742 3.826-1.391a10.497 10.497 0 0 0 2.61-2.14c1.252-1.42 1.998-3.005 2.553-4.408.075.003.148.005.221.005 1.371 0 2.215-.55 2.68-1.01.505-.5.685-.998.704-1.053L24 7.076l-.237-.19Z"></path>
 					<path d="M2.216 8.075h2.119a.186.186 0 0 0 .185-.186V6a.186.186 0 0 0-.185-.186H2.216A.186.186 0 0 0 2.031 6v1.89c0 .103.083.186.185.186Zm2.92 0h2.118a.185.185 0 0 0 .185-.186V6a.185.185 0 0 0-.185-.186H5.136A.185.185 0 0 0 4.95 6v1.89c0 .103.083.186.186.186Zm2.964 0h2.118a.186.186 0 0 0 .185-.186V6a.186.186 0 0 0-.185-.186H8.1A.185.185 0 0 0 7.914 6v1.89c0 .103.083.186.186.186Zm2.928 0h2.119a.185.185 0 0 0 .185-.186V6a.185.185 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm-5.892-2.72h2.118a.185.185 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186H5.136a.186.186 0 0 0-.186.186v1.89c0 .103.083.186.186.186Zm2.964 0h2.118a.186.186 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186H8.1a.186.186 0 0 0-.186.186v1.89c0 .103.083.186.186.186Zm2.928 0h2.119a.185.185 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm0-2.72h2.119a.186.186 0 0 0 .185-.186V.56a.185.185 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm2.955 5.44h2.118a.185.185 0 0 0 .186-.186V6a.185.185 0 0 0-.186-.186h-2.118a.185.185 0 0 0-.185.186v1.89c0 .103.083.186.185.186Z"></path>
-					<path d="M2.216 8.075h2.119a.186.186 0 0 0 .185-.186V6a.186.186 0 0 0-.185-.186H2.216A.186.186 0 0 0 2.031 6v1.89c0 .103.083.186.185.186Zm2.92 0h2.118a.185.185 0 0 0 .185-.186V6a.185.185 0 0 0-.185-.186H5.136A.185.185 0 0 0 4.95 6v1.89c0 .103.083.186.186.186Zm2.964 0h2.118a.186.186 0 0 0 .185-.186V6a.186.186 0 0 0-.185-.186H8.1A.185.185 0 0 0 7.914 6v1.89c0 .103.083.186.186.186Zm2.928 0h2.119a.185.185 0 0 0 .185-.186V6a.185.185 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm-5.892-2.72h2.118a.185.185 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186H5.136a.186.186 0 0 0-.186.186v1.89c0 .103.083.186.186.186Zm2.964 0h2.118a.186.186 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186H8.1a.186.186 0 0 0-.186.186v1.89c0 .103.083.186.186.186Zm2.928 0h2.119a.185.185 0 0 0 .185-.186V3.28a.186.186 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm0-2.72h2.119a.186.186 0 0 0 .185-.186V.56a.185.185 0 0 0-.185-.186h-2.119a.186.186 0 0 0-.185.186v1.89c0 .103.083.186.185.186Zm2.955 5.44h2.118a.185.185 0 0 0 .186-.186V6a.185.185 0 0 0-.186-.186h-2.118a.185.185 0 0 0-.185.186v1.89c0 .103.083.186.185.186Z"></path>
 				</svg>
 			</div>
 			<h1 class="title">Docker Hub 镜像搜索</h1>
@@ -659,65 +658,80 @@ function httpHandler(req, pathname, baseHost) {
     if (req.method === 'OPTIONS' &&
         reqHdrRaw.has('access-control-request-headers')
     ) {
-
-        /** @type {RequestInit} */
-        const reqInit = {
-            method: req.method,
-            headers: reqHdrNew,
-            redirect: 'follow',
-            body: req.body
-        };
-        return proxy(urlObj, reqInit, rawLen);
+        return new Response(null, PREFLIGHT_INIT);
     }
 
-    /**
-     * 代理请求
-     * @param {URL} urlObj URL对象
-     * @param {RequestInit} reqInit 请求初始化对象
-     * @param {string} rawLen 原始长度
-     */
-    async function proxy(urlObj, reqInit, rawLen) {
-        const res = await fetch(urlObj.href, reqInit);
-        const resHdrOld = res.headers;
-        const resHdrNew = new Headers(resHdrOld);
+    let rawLen = '';
 
-        // 验证长度
-        if (rawLen) {
-            const newLen = resHdrOld.get('content-length') || '';
-            const badLen = (rawLen !== newLen);
+    const reqHdrNew = new Headers(reqHdrRaw);
+    reqHdrNew.set('Accept-Encoding', 'identity');
 
-            if (badLen) {
-                return makeRes(res.body, 400, {
-                    '--error': `bad len: ${newLen}, except: ${rawLen}`,
-                    'access-control-expose-headers': '--error',
-                });
-            }
+    reqHdrNew.delete("Authorization"); // 修复s3错误
+
+    const refer = reqHdrNew.get('referer');
+
+    let urlStr = pathname;
+
+    const urlObj = newUrl(urlStr, 'https://' + baseHost);
+
+    /** @type {RequestInit} */
+    const reqInit = {
+        method: req.method,
+        headers: reqHdrNew,
+        redirect: 'follow',
+        body: req.body
+    };
+    return proxy(urlObj, reqInit, rawLen);
+}
+
+/**
+ * 代理请求
+ * @param {URL} urlObj URL对象
+ * @param {RequestInit} reqInit 请求初始化对象
+ * @param {string} rawLen 原始长度
+ */
+async function proxy(urlObj, reqInit, rawLen) {
+    const res = await fetch(urlObj.href, reqInit);
+    const resHdrOld = res.headers;
+    const resHdrNew = new Headers(resHdrOld);
+
+    // 验证长度
+    if (rawLen) {
+        const newLen = resHdrOld.get('content-length') || '';
+        const badLen = (rawLen !== newLen);
+
+        if (badLen) {
+            return makeRes(res.body, 400, {
+                '--error': `bad len: ${newLen}, except: ${rawLen}`,
+                'access-control-expose-headers': '--error',
+            });
         }
-        const status = res.status;
-        resHdrNew.set('access-control-expose-headers', '*');
-        resHdrNew.set('access-control-allow-origin', '*');
-        resHdrNew.set('Cache-Control', 'max-age=1500');
+    }
+    const status = res.status;
+    resHdrNew.set('access-control-expose-headers', '*');
+    resHdrNew.set('access-control-allow-origin', '*');
+    resHdrNew.set('Cache-Control', 'max-age=1500');
 
-        // 删除不必要的头
-        resHdrNew.delete('content-security-policy');
-        resHdrNew.delete('content-security-policy-report-only');
-        resHdrNew.delete('clear-site-data');
+    // 删除不必要的头
+    resHdrNew.delete('content-security-policy');
+    resHdrNew.delete('content-security-policy-report-only');
+    resHdrNew.delete('clear-site-data');
 
-        // 确保 Content-Length 存在 (如果原响应中有)
-        if (resHdrOld.has('content-length')) {
-            resHdrNew.set('Content-Length', resHdrOld.get('content-length'));
-        }
-
-        return new Response(res.body, {
-            status,
-            headers: resHdrNew
-        });
+    // 确保 Content-Length 存在 (如果原响应中有)
+    if (resHdrOld.has('content-length')) {
+        resHdrNew.set('Content-Length', resHdrOld.get('content-length'));
     }
 
-    async function ADD(envadd) {
-        var addtext = envadd.replace(/[	 |"'\r\n]+/g, ',').replace(/,+/g, ',');	// 将空格、双引号、单引号和换行符替换为逗号
-        if (addtext.charAt(0) == ',') addtext = addtext.slice(1);
-        if (addtext.charAt(addtext.length - 1) == ',') addtext = addtext.slice(0, addtext.length - 1);
-        const add = addtext.split(',');
-        return add;
-    }
+    return new Response(res.body, {
+        status,
+        headers: resHdrNew
+    });
+}
+
+async function ADD(envadd) {
+    var addtext = envadd.replace(/[	 |"'\r\n]+/g, ',').replace(/,+/g, ',');	// 将空格、双引号、单引号和换行符替换为逗号
+    if (addtext.charAt(0) == ',') addtext = addtext.slice(1);
+    if (addtext.charAt(addtext.length - 1) == ',') addtext = addtext.slice(0, addtext.length - 1);
+    const add = addtext.split(',');
+    return add;
+}
