@@ -156,7 +156,17 @@ module.exports = async (req, res) => {
 			const responseHeaders = {};
 			Object.keys(upstreamRes.headers).forEach(key => {
 				if (key.toLowerCase() !== 'transfer-encoding') {
-					responseHeaders[key] = upstreamRes.headers[key];
+					if (key.toLowerCase() === 'www-authenticate') {
+						const authHeader = upstreamRes.headers[key];
+						const proxyAuthUrl = `https://${req.headers.host}`;
+						if (Array.isArray(authHeader)) {
+							responseHeaders[key] = authHeader.map(h => h.replace(/https?:\/\/auth\.docker\.io/, proxyAuthUrl));
+						} else {
+							responseHeaders[key] = authHeader.replace(/https?:\/\/auth\.docker\.io/, proxyAuthUrl);
+						}
+					} else {
+						responseHeaders[key] = upstreamRes.headers[key];
+					}
 				}
 			});
 			if (upstreamRes.headers['content-length']) {
