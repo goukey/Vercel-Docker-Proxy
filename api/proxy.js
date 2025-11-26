@@ -91,18 +91,47 @@ module.exports = async (req, res) => {
 						let html = Buffer.concat(chunks).toString('utf-8');
 						const currentHost = req.headers.host;
 
-						// 替换 docker pull 命令 - 使用更宽松的正则
-						// 1. 替换有 namespace 的镜像 (username/image:tag 或 username/image)
-						html = html.replace(/docker pull ([\w][\w.-]*\/[\w][\w.-]*:[\w][\w.-]*)/g, `docker pull ${currentHost}/$1`);
-						html = html.replace(/docker pull ([\w][\w.-]*\/[\w][\w.-]*)(?!:)/g, `docker pull ${currentHost}/$1`);
+						// 注入客户端 JavaScript 来处理动态生成的 docker pull 命令
+						const injectedScript = `
+<script>
+(function() {
+	const proxyHost = '${currentHost}';
+	function replacePullCommands(node) {
+		if (node.nodeType === Node.TEXT_NODE) {
+			const text = node.textContent;
+			if (text.includes('docker pull')) {
+				let newText = text.replace(/docker pull ([\\w][\\w.-]*\\/[\\w][\\w.-]*:[\\w][\\w.-]*)/g, \`docker pull \${proxyHost}/$1\`);
+				newText = newText.replace(/docker pull ([\\w][\\w.-]*\\/[\\w][\\w.-]*)(?!:)/g, \`docker pull \${proxyHost}/$1\`);
+				newText = newText.replace(/docker pull ([\\w][\\w.-]*:[\\w][\\w.-]*)(?![\\w\\/])/g, (match, image) => {
+					return image.includes('/') ? match : \`docker pull \${proxyHost}/library/\${image}\`;
+				});
+				newText = newText.replace(/docker pull ([\\w][\\w.-]*)(?![:\\/\\w])/g, (match, image) => {
+					return image.includes('/') ? match : \`docker pull \${proxyHost}/library/\${image}\`;
+				});
+				if (newText !== text) node.textContent = newText;
+			}
+		} else if (node.nodeType === Node.ELEMENT_NODE) {
+			for (let child of node.childNodes) replacePullCommands(child);
+		}
+	}
+	const observer = new MutationObserver((mutations) => {
+		mutations.forEach((mutation) => {
+			mutation.addedNodes.forEach((node) => replacePullCommands(node));
+		});
+	});
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', () => {
+			replacePullCommands(document.body);
+			observer.observe(document.body, { childList: true, subtree: true });
+		});
+	} else {
+		replacePullCommands(document.body);
+		observer.observe(document.body, { childList: true, subtree: true });
+	}
+})();
+</script>`;
 
-						// 2. 替换官方镜像 (image:tag 或 image)
-						html = html.replace(/docker pull ([\w][\w.-]*:[\w][\w.-]*)(?![\w\/])/g, (match, image) => {
-							return image.includes('/') ? match : `docker pull ${currentHost}/library/${image}`;
-						});
-						html = html.replace(/docker pull ([\w][\w.-]*)(?![:\/\w])/g, (match, image) => {
-							return image.includes('/') ? match : `docker pull ${currentHost}/library/${image}`;
-						});
+						html = html.replace(/<\/body>/i, injectedScript + '</body>');
 
 						const responseHeaders = {};
 						Object.keys(proxyRes.headers).forEach(key => {
