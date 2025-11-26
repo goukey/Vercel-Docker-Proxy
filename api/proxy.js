@@ -91,13 +91,16 @@ module.exports = async (req, res) => {
 						let html = Buffer.concat(chunks).toString('utf-8');
 						const currentHost = req.headers.host;
 
-						// 替换 docker pull 命令
-						html = html.replace(/docker pull ([a-zA-Z0-9][a-zA-Z0-9._-]*\/[a-zA-Z0-9][a-zA-Z0-9._-]*:[a-zA-Z0-9][a-zA-Z0-9._-]*)/g, `docker pull ${currentHost}/$1`);
-						html = html.replace(/docker pull ([a-zA-Z0-9][a-zA-Z0-9._-]*\/[a-zA-Z0-9][a-zA-Z0-9._-]*)(?![:\w])/g, `docker pull ${currentHost}/$1`);
-						html = html.replace(/docker pull ([a-zA-Z0-9][a-zA-Z0-9._-]*:[a-zA-Z0-9][a-zA-Z0-9._-]*)(?!\w)/g, (match, image) => {
+						// 替换 docker pull 命令 - 使用更宽松的正则
+						// 1. 替换有 namespace 的镜像 (username/image:tag 或 username/image)
+						html = html.replace(/docker pull ([\w][\w.-]*\/[\w][\w.-]*:[\w][\w.-]*)/g, `docker pull ${currentHost}/$1`);
+						html = html.replace(/docker pull ([\w][\w.-]*\/[\w][\w.-]*)(?!:)/g, `docker pull ${currentHost}/$1`);
+
+						// 2. 替换官方镜像 (image:tag 或 image)
+						html = html.replace(/docker pull ([\w][\w.-]*:[\w][\w.-]*)(?![\w\/])/g, (match, image) => {
 							return image.includes('/') ? match : `docker pull ${currentHost}/library/${image}`;
 						});
-						html = html.replace(/docker pull ([a-zA-Z0-9][a-zA-Z0-9._-]*)(?![:\w\/])/g, (match, image) => {
+						html = html.replace(/docker pull ([\w][\w.-]*)(?![:\/\w])/g, (match, image) => {
 							return image.includes('/') ? match : `docker pull ${currentHost}/library/${image}`;
 						});
 
